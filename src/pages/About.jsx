@@ -88,33 +88,40 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 to-secondary-600 text-white py-20">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Hero Section with Gradient Background */}
+      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white py-20 overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-32 h-32 border-4 border-white rounded-full"></div>
+          <div className="absolute top-40 right-32 w-24 h-24 border-4 border-white rounded-full"></div>
+          <div className="absolute bottom-20 left-32 w-28 h-28 border-4 border-white rounded-full"></div>
+          <div className="absolute bottom-40 right-20 w-20 h-20 border-4 border-white rounded-full"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             About StudySphere
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
             Empowering learners worldwide with cutting-edge education technology and 
             industry-relevant courses designed for the future of work.
           </p>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white dark:bg-gray-800">
+      {/* Stats Section with Dark Background */}
+      <section className="py-16 bg-gray-800 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-2xl mb-4">
-                  <stat.icon className="w-8 h-8" />
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <stat.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   {stat.value}
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                <div className="text-gray-300 text-sm md:text-base">
                   {stat.label}
                 </div>
               </div>

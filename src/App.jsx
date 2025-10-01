@@ -11,6 +11,7 @@ import CourseDetail from './pages/CourseDetail';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import ForgotPassword from './pages/ForgotPassword';
 import Admin from './pages/Admin';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/admin" element={<Admin />} />
               </Routes>
             </main>

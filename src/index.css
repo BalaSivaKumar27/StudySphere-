@@ -53,7 +53,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  @apply bg-gray-300 rounded-full dark:bg-gray-600;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -124,11 +124,11 @@
 
 /* Prose styles for content */
 .prose {
-  @apply text-gray-600 dark:text-gray-300 leading-relaxed;
+  @apply leading-relaxed text-gray-600 dark:text-gray-300;
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-  @apply text-gray-900 dark:text-white font-semibold;
+  @apply font-semibold text-gray-900 dark:text-white;
 }
 
 .prose a {
@@ -140,20 +140,20 @@
 }
 
 .prose pre {
-  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto;
+  @apply p-4 overflow-x-auto bg-gray-100 rounded-lg dark:bg-gray-800;
 }
 
 .prose blockquote {
-  @apply border-l-4 border-primary-500 pl-4 italic;
+  @apply pl-4 italic border-l-4 border-primary-500;
 }
 
 /* Form styles */
 .form-input {
-  @apply block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200;
+  @apply block w-full px-3 py-2 text-gray-900 placeholder-gray-500 transition-colors duration-200 bg-white border border-gray-300 rounded-lg dark:border-gray-600 focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400;
 }
 
 .form-input:focus {
-  @apply outline-none ring-2 ring-primary-500 border-transparent;
+  @apply border-transparent outline-none ring-2 ring-primary-500;
 }
 
 .form-input.error {
@@ -162,28 +162,28 @@
 
 /* Button styles */
 .btn {
-  @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200;
+  @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
 .btn-primary {
-  @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  @apply text-white bg-primary-600 hover:bg-primary-700 focus:ring-primary-500;
 }
 
 .btn-secondary {
-  @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+  @apply text-white bg-gray-600 hover:bg-gray-700 focus:ring-gray-500;
 }
 
 .btn-outline {
-  @apply border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-primary-500;
+  @apply text-gray-700 border-gray-300 dark:border-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-primary-500;
 }
 
 /* Card styles */
 .card {
-  @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700;
+  @apply bg-white border border-gray-200 shadow-sm dark:bg-gray-800 rounded-xl dark:border-gray-700;
 }
 
 .card-hover {
-  @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
 }
 
 /* Badge styles */
@@ -196,15 +196,15 @@
 }
 
 .badge-success {
-  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+  @apply text-green-800 bg-green-100 dark:bg-green-900 dark:text-green-200;
 }
 
 .badge-warning {
-  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+  @apply text-yellow-800 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-200;
 }
 
 .badge-error {
-  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+  @apply text-red-800 bg-red-100 dark:bg-red-900 dark:text-red-200;
 }
 
 /* Responsive utilities */
@@ -218,4 +218,40 @@
   .mobile-only {
     display: none;
   }
+}
+
+.certificate-container * {
+  box-sizing: border-box;
+  transform: none !important;
+}
+
+.certificate-container {
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+/* Certificate Download Fixes */
+.certificate-container * {
+  transform: none !important;
+  box-sizing: border-box !important;
+}
+
+.certificate-container {
+  transform: none !important;
+  position: relative !important;
+}
+
+#certificate-content {
+  transform: none !important;
+  position: relative !important;
+}
+
+/* Ensure all text is visible */
+.certificate-title,
+.student-name,
+.course-title,
+.certificate-id {
+  transform: none !important;
+  position: relative !important;
 }

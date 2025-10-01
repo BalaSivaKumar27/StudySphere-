@@ -5,31 +5,54 @@ import {
   CheckCircle, Award, ArrowLeft, ChevronRight,
   Globe, Smartphone, Trophy, BarChart3
 } from 'lucide-react';
-import { courses, lessons, quizzes } from '../data/courses';
+import { courses, lessons, quizzes, lessonContent } from '../data/courses';
 import { useAuth } from '../context/AuthContext';
 import QuizComponent from '../components/course/QuizComponent';
 import ProgressBar from '../components/common/ProgressBar';
 import PaymentModal from '../components/payment/PaymentModal';
+import CertificateGenerator from '../components/certificate/CertificateGenerator';
+import CourseCompletionModal from '../components/certificate/CourseCompletionModal';
 
 const CourseDetail = () => {
   const { id } = useParams();
-  const { user, enrollInCourse, updateUserProgress } = useAuth();
+  const { user, enrollInCourse, updateUserProgress, markLessonComplete, updateLastAccessedLesson, markCourseComplete } = useAuth();
   const [course, setCourse] = useState(null);
   const [currentLesson, setCurrentLesson] = useState(0);
   const [showQuiz, setShowQuiz] = useState(false);
   const [completedLessons, setCompletedLessons] = useState([]);
   const [showSidebar, setShowSidebar] = useState(true);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showCertificate, setShowCertificate] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
 
-  useEffect(() => {
-    const foundCourse = courses.find(c => c.id === parseInt(id));
-    setCourse(foundCourse);
-  }, [id]);
-
+  // Define variables before useEffect to avoid circular dependencies
   const isEnrolled = user?.enrolledCourses?.some(c => c.id === parseInt(id));
   const courseLessons = lessons[parseInt(id)] || [];
   const courseQuiz = quizzes[parseInt(id)];
   const enrolledCourse = user?.enrolledCourses?.find(c => c.id === parseInt(id));
+  const currentLessonContent = lessonContent[parseInt(id)]?.[courseLessons[currentLesson]?.id];
+  const isCourseCompleted = enrolledCourse?.isCompleted || false;
+
+  useEffect(() => {
+    const foundCourse = courses.find(c => c.id === parseInt(id));
+    setCourse(foundCourse);
+    
+    // Set current lesson to last accessed lesson if enrolled
+    if (isEnrolled && enrolledCourse?.lastAccessedLesson) {
+      const lessonIndex = courseLessons.findIndex(lesson => lesson.id === enrolledCourse.lastAccessedLesson);
+      if (lessonIndex !== -1) {
+        setCurrentLesson(lessonIndex);
+      }
+    }
+
+    // Initialize completed lessons from user's progress
+    if (isEnrolled && enrolledCourse?.completedLessons) {
+      const completedLessonIndices = enrolledCourse.completedLessons.map(lessonId => 
+        courseLessons.findIndex(lesson => lesson.id === lessonId)
+      ).filter(index => index !== -1);
+      setCompletedLessons(completedLessonIndices);
+    }
+  }, [id, isEnrolled, enrolledCourse, courseLessons, user]);
 
   const handleEnroll = () => {
     if (!user) {
@@ -51,20 +74,59 @@ const CourseDetail = () => {
   };
 
   const handleLessonComplete = (lessonIndex) => {
-    if (!completedLessons.includes(lessonIndex)) {
+    const lessonId = courseLessons[lessonIndex]?.id;
+    if (!completedLessons.includes(lessonIndex) && lessonId) {
       const newCompleted = [...completedLessons, lessonIndex];
       setCompletedLessons(newCompleted);
       
-      const progress = (newCompleted.length / courseLessons.length) * 100;
+      // Calculate progress including quiz (if exists)
+      const totalItems = courseLessons.length + (courseQuiz ? 1 : 0);
+      const completedItems = newCompleted.length;
+      const progress = Math.round((completedItems / totalItems) * 100);
+      
+      // Update progress in the context
       updateUserProgress(parseInt(id), progress);
+      markLessonComplete(parseInt(id), lessonId);
+      
+      // Force a small delay to ensure state updates
+      setTimeout(() => {
+        // Check if course is completed (all lessons completed, no quiz or quiz already completed)
+        if (progress >= 100) {
+          markCourseComplete(parseInt(id));
+          // Show completion modal after a short delay
+          setTimeout(() => {
+            setShowCompletionModal(true);
+          }, 1000);
+        }
+      }, 100);
+    }
+  };
+
+  const handleLessonChange = (lessonIndex) => {
+    setCurrentLesson(lessonIndex);
+    const lessonId = courseLessons[lessonIndex]?.id;
+    if (lessonId) {
+      updateLastAccessedLesson(parseInt(id), lessonId);
     }
   };
 
   const handleQuizComplete = (score) => {
     setShowQuiz(false);
     // Update user progress with quiz completion
-    const progress = Math.min((completedLessons.length + 1) / (courseLessons.length + 1) * 100, 100);
+    const totalItems = courseLessons.length + (courseQuiz ? 1 : 0);
+    const completedItems = completedLessons.length + 1; // +1 for quiz completion
+    const progress = (completedItems / totalItems) * 100;
+    
     updateUserProgress(parseInt(id), progress);
+    
+    // Check if course is completed (all lessons + quiz)
+    if (progress >= 100) {
+      markCourseComplete(parseInt(id));
+      // Show completion modal after a short delay
+      setTimeout(() => {
+        setShowCompletionModal(true);
+      }, 1000);
+    }
   };
 
   if (!course) {
@@ -266,7 +328,7 @@ const CourseDetail = () => {
                       {courseLessons.map((lesson, index) => (
                         <button
                           key={lesson.id}
-                          onClick={() => setCurrentLesson(index)}
+                          onClick={() => handleLessonChange(index)}
                           className={`w-full text-left p-3 rounded-lg transition-all duration-200 ${
                             currentLesson === index
                               ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-700'
@@ -306,6 +368,24 @@ const CourseDetail = () => {
                               <p className="text-sm font-medium">Final Quiz</p>
                               <p className="text-xs text-gray-500 dark:text-gray-400">
                                 Test your knowledge
+                              </p>
+                            </div>
+                          </div>
+                        </button>
+                      )}
+
+                      {/* Certificate Button for Completed Courses */}
+                      {isCourseCompleted && (
+                        <button
+                          onClick={() => setShowCertificate(true)}
+                          className="w-full text-left p-3 rounded-lg bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200 mt-4"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <Award className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
+                            <div>
+                              <p className="text-sm font-medium">Download Certificate</p>
+                              <p className="text-xs text-yellow-600 dark:text-yellow-400">
+                                Course completed! Get your certificate
                               </p>
                             </div>
                           </div>
@@ -382,27 +462,86 @@ const CourseDetail = () => {
                           </div>
                         )}
 
-                        {/* Lesson Description */}
-                        <div className="prose dark:prose-invert max-w-none mb-8">
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            In this lesson, you'll learn about {courseLessons[currentLesson].title.toLowerCase()}. 
-                            We'll cover the fundamental concepts, practical applications, and best practices 
-                            to help you master this important topic.
-                          </p>
-                        </div>
+                        {/* Rich Lesson Content */}
+                        {currentLessonContent ? (
+                          <div className="space-y-8 mb-8">
+                            {/* Theory Section */}
+                            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
+                              <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-4 flex items-center">
+                                <BookOpen className="w-5 h-5 mr-2" />
+                                Theory & Concepts
+                              </h3>
+                              <div className="prose dark:prose-invert max-w-none">
+                                <pre className="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
+                                  {currentLessonContent.theory}
+                                </pre>
+                              </div>
+                            </div>
+
+                            {/* Code Snippet Section */}
+                            {currentLessonContent.codeSnippet && (
+                              <div className="bg-gray-900 rounded-lg p-6">
+                                <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                                  </svg>
+                                  Code Example
+                                </h3>
+                                <pre className="text-green-400 text-sm overflow-x-auto">
+                                  <code>{currentLessonContent.codeSnippet}</code>
+                                </pre>
+                              </div>
+                            )}
+
+                            {/* References Section */}
+                            {currentLessonContent.references && currentLessonContent.references.length > 0 && (
+                              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
+                                <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-4 flex items-center">
+                                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+                                  </svg>
+                                  Additional Resources
+                                </h3>
+                                <ul className="space-y-2">
+                                  {currentLessonContent.references.map((ref, index) => (
+                                    <li key={index} className="text-sm">
+                                      <a 
+                                        href={ref.split(': ')[1]} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-green-700 dark:text-green-300 hover:text-green-800 dark:hover:text-green-200 underline"
+                                      >
+                                        {ref}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          /* Fallback Description */
+                          <div className="prose dark:prose-invert max-w-none mb-8">
+                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                              In this lesson, you'll learn about {courseLessons[currentLesson].title.toLowerCase()}. 
+                              We'll cover the fundamental concepts, practical applications, and best practices 
+                              to help you master this important topic.
+                            </p>
+                          </div>
+                        )}
 
                         {/* Lesson Actions */}
                         <div className="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-gray-700">
                           <div className="flex space-x-3">
                             <button
-                              onClick={() => setCurrentLesson(Math.max(0, currentLesson - 1))}
+                              onClick={() => handleLessonChange(Math.max(0, currentLesson - 1))}
                               disabled={currentLesson === 0}
                               className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             >
                               Previous
                             </button>
                             <button
-                              onClick={() => setCurrentLesson(Math.min(courseLessons.length - 1, currentLesson + 1))}
+                              onClick={() => handleLessonChange(Math.min(courseLessons.length - 1, currentLesson + 1))}
                               disabled={currentLesson === courseLessons.length - 1}
                               className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             >
@@ -470,7 +609,11 @@ const CourseDetail = () => {
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                     Course Content
                   </h2>
-                  <div className="space-y-4">
+                  <div className="relative">
+                    <div className="mb-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg text-yellow-800 dark:text-yellow-300 text-sm">
+                      Unlock full course content by enrolling. Preview below is partially hidden until purchase.
+                    </div>
+                    <div className="space-y-4 blur-[1.5px] pointer-events-none select-none">
                     {courseLessons.slice(0, 5).map((lesson, index) => (
                       <div key={lesson.id} className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
                         <div className="flex items-center space-x-3">
@@ -493,6 +636,28 @@ const CourseDetail = () => {
                         </p>
                       </div>
                     )}
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center bg-white/95 dark:bg-gray-900/95 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-yellow-600 dark:text-yellow-400">
+                            <path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm3 8H9V6a3 3 0 116 0v3z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                          Course Content Locked
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                          Enroll now to access all lessons, code examples, and resources
+                        </p>
+                        <button
+                          onClick={handleEnroll}
+                          className="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors duration-200"
+                        >
+                          {course.price === 'Free' ? 'Enroll Now' : `Buy Now - ${course.price}`}
+                        </button>
+                      </div>
+                    </div>
                     {courseLessons.length === 0 && (
                       <div className="text-center py-8">
                         <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
@@ -557,6 +722,24 @@ const CourseDetail = () => {
         onClose={() => setShowPaymentModal(false)}
         course={course}
         onPaymentSuccess={handlePaymentSuccess}
+      />
+
+      <CertificateGenerator
+        isOpen={showCertificate}
+        onClose={() => setShowCertificate(false)}
+        course={course}
+        user={user}
+        completionDate={enrolledCourse?.completedAt ? new Date(enrolledCourse.completedAt).toLocaleDateString() : new Date().toLocaleDateString()}
+      />
+
+      <CourseCompletionModal
+        isOpen={showCompletionModal}
+        onClose={() => setShowCompletionModal(false)}
+        course={course}
+        onViewCertificate={() => {
+          setShowCompletionModal(false);
+          setShowCertificate(true);
+        }}
       />
     </>
   );

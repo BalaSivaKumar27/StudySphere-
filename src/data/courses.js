@@ -514,6 +514,104 @@ export const lessons = {
     { id: 18, title: 'Final Project: Interactive Web App', duration: '90 min', type: 'interactive' },
   ],
 
+  // Python Programming Basics (Course ID: 4)
+  4: [
+    { id: 1, title: 'Getting Started with Python', duration: '20 min', type: 'video' },
+    { id: 2, title: 'Variables and Data Types', duration: '30 min', type: 'interactive' },
+    { id: 3, title: 'Control Flow (if/else)', duration: '30 min', type: 'video' },
+    { id: 4, title: 'Loops (for/while)', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Functions and Scope', duration: '40 min', type: 'video' },
+    { id: 6, title: 'Collections (list, tuple, dict, set)', duration: '45 min', type: 'interactive' },
+    { id: 7, title: 'Modules and Packages', duration: '25 min', type: 'video' },
+    { id: 8, title: 'File I/O Basics', duration: '30 min', type: 'interactive' },
+    { id: 9, title: 'Errors and Exceptions', duration: '30 min', type: 'video' },
+    { id: 10, title: 'Mini Project: CLI Utility', duration: '60 min', type: 'interactive' },
+    { id: 11, title: 'Virtual Environments', duration: '20 min', type: 'video' },
+    { id: 12, title: 'Next Steps in Python', duration: '20 min', type: 'video' },
+  ],
+
+  // Git & GitHub Essentials (Course ID: 5)
+  5: [
+    { id: 1, title: 'What is Git?', duration: '20 min', type: 'video' },
+    { id: 2, title: 'Installing and Configuring Git', duration: '20 min', type: 'interactive' },
+    { id: 3, title: 'Repositories and Commits', duration: '30 min', type: 'video' },
+    { id: 4, title: 'Branching and Merging', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Resolving Merge Conflicts', duration: '30 min', type: 'video' },
+    { id: 6, title: 'Working with GitHub', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Pull Requests and Code Reviews', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Rebasing and History Rewriting', duration: '40 min', type: 'interactive' },
+    { id: 9, title: 'Git Workflows (GitFlow, Trunk)', duration: '30 min', type: 'video' },
+    { id: 10, title: 'Project: Collaborate on a Repo', duration: '60 min', type: 'interactive' },
+  ],
+
+  // Bootstrap Framework (Course ID: 6)
+  6: [
+    { id: 1, title: 'Bootstrap Overview and Setup', duration: '20 min', type: 'video' },
+    { id: 2, title: 'Grid System Fundamentals', duration: '30 min', type: 'interactive' },
+    { id: 3, title: 'Typography and Utilities', duration: '25 min', type: 'video' },
+    { id: 4, title: 'Components: Navbar, Cards, Modals', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Forms and Validation', duration: '30 min', type: 'video' },
+    { id: 6, title: 'Responsive Design with Breakpoints', duration: '30 min', type: 'interactive' },
+    { id: 7, title: 'Customizing with Sass', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: Landing Page', duration: '60 min', type: 'interactive' },
+    { id: 9, title: 'Accessibility in Bootstrap', duration: '20 min', type: 'video' },
+    { id: 10, title: 'Deployment Tips', duration: '20 min', type: 'video' },
+  ],
+
+  // SQL Database Basics (Course ID: 7)
+  7: [
+    { id: 1, title: 'Relational Databases 101', duration: '25 min', type: 'video' },
+    { id: 2, title: 'SQL Syntax and SELECT', duration: '35 min', type: 'interactive' },
+    { id: 3, title: 'Filtering and Sorting', duration: '30 min', type: 'video' },
+    { id: 4, title: 'Joins (INNER, LEFT, RIGHT)', duration: '40 min', type: 'interactive' },
+    { id: 5, title: 'Aggregations and Grouping', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Subqueries and CTEs', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Indexes and Performance', duration: '30 min', type: 'video' },
+    { id: 8, title: 'Database Design Basics', duration: '35 min', type: 'interactive' },
+    { id: 9, title: 'Transactions and ACID', duration: '30 min', type: 'video' },
+    { id: 10, title: 'Project: Reporting Queries', duration: '60 min', type: 'interactive' },
+  ],
+
+  // Web Design Fundamentals (Course ID: 8)
+  8: [
+    { id: 1, title: 'Design Principles Overview', duration: '25 min', type: 'video' },
+    { id: 2, title: 'Color Theory', duration: '30 min', type: 'interactive' },
+    { id: 3, title: 'Typography Basics', duration: '25 min', type: 'video' },
+    { id: 4, title: 'Layout and Composition', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Designing for Accessibility', duration: '30 min', type: 'video' },
+    { id: 6, title: 'Wireframing and Prototyping', duration: '35 min', type: 'interactive' },
+    { id: 7, title: 'Design Systems and Style Guides', duration: '30 min', type: 'video' },
+    { id: 8, title: 'Project: Website Redesign', duration: '60 min', type: 'interactive' },
+  ],
+
+  // Linux Command Line (Course ID: 9)
+  9: [
+    { id: 1, title: 'Terminal Basics', duration: '20 min', type: 'video' },
+    { id: 2, title: 'File System Navigation', duration: '25 min', type: 'interactive' },
+    { id: 3, title: 'File Operations and Permissions', duration: '30 min', type: 'video' },
+    { id: 4, title: 'Pipes and Redirection', duration: '30 min', type: 'interactive' },
+    { id: 5, title: 'Process Management', duration: '30 min', type: 'video' },
+    { id: 6, title: 'Shell Scripting Basics', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Networking Tools', duration: '30 min', type: 'video' },
+    { id: 8, title: 'Package Managers', duration: '25 min', type: 'interactive' },
+    { id: 9, title: 'Logs and Monitoring', duration: '25 min', type: 'video' },
+    { id: 10, title: 'Project: Automate a Task', duration: '50 min', type: 'interactive' },
+  ],
+
+  // WordPress for Beginners (Course ID: 10)
+  10: [
+    { id: 1, title: 'WordPress Overview', duration: '20 min', type: 'video' },
+    { id: 2, title: 'Installing WordPress', duration: '25 min', type: 'interactive' },
+    { id: 3, title: 'Themes and Customization', duration: '30 min', type: 'video' },
+    { id: 4, title: 'Plugins and Widgets', duration: '30 min', type: 'interactive' },
+    { id: 5, title: 'Pages, Posts, and Media', duration: '30 min', type: 'video' },
+    { id: 6, title: 'Menus and Navigation', duration: '20 min', type: 'interactive' },
+    { id: 7, title: 'Users and Roles', duration: '20 min', type: 'video' },
+    { id: 8, title: 'Security and Backups', duration: '30 min', type: 'interactive' },
+    { id: 9, title: 'SEO Basics', duration: '25 min', type: 'video' },
+    { id: 10, title: 'Project: Build a Blog', duration: '60 min', type: 'interactive' },
+  ],
+
   // Advanced React & Redux (Course ID: 21)
   21: [
     { id: 1, title: 'Advanced React Patterns', duration: '45 min', type: 'video' },
@@ -552,6 +650,435 @@ export const lessons = {
     { id: 34, title: 'Project Presentation', duration: '30 min', type: 'interactive' },
     { id: 35, title: 'Final Project Review and Feedback', duration: '45 min', type: 'interactive' },
   ],
+
+  // Advanced: Microservices Architecture (Course ID: 22)
+  22: [
+    { id: 1, title: 'Monoliths vs Microservices', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Service Decomposition', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'API Gateways', duration: '35 min', type: 'video' },
+    { id: 4, title: 'Service Discovery', duration: '30 min', type: 'interactive' },
+    { id: 5, title: 'Data Management Strategies', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Messaging and Event-Driven Design', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Observability (Logs, Metrics, Traces)', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Resilience Patterns', duration: '40 min', type: 'interactive' },
+    { id: 9, title: 'Security in Microservices', duration: '35 min', type: 'video' },
+    { id: 10, title: 'Project: Design a System', duration: '90 min', type: 'interactive' },
+  ],
+
+  // Advanced: Machine Learning with Python (Course ID: 23)
+  23: [
+    { id: 1, title: 'ML Landscape and Use Cases', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Data Preparation with pandas', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Modeling with scikit-learn', duration: '45 min', type: 'video' },
+    { id: 4, title: 'Evaluation Metrics', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Feature Engineering', duration: '40 min', type: 'video' },
+    { id: 6, title: 'Intro to Neural Networks', duration: '45 min', type: 'interactive' },
+    { id: 7, title: 'Model Deployment Basics', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: End-to-End Pipeline', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Advanced: Advanced Database Design (Course ID: 24)
+  24: [
+    { id: 1, title: 'Indexing Strategies', duration: '35 min', type: 'video' },
+    { id: 2, title: 'Query Optimization', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Partitioning and Sharding', duration: '35 min', type: 'video' },
+    { id: 4, title: 'Replication and High Availability', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Schema Design Patterns', duration: '40 min', type: 'video' },
+    { id: 6, title: 'Transactions at Scale', duration: '35 min', type: 'interactive' },
+    { id: 7, title: 'Security and Auditing', duration: '30 min', type: 'video' },
+    { id: 8, title: 'Project: Performance Tuning', duration: '90 min', type: 'interactive' },
+  ],
+
+  // Advanced: Cloud Architecture (AWS) (Course ID: 25)
+  25: [
+    { id: 1, title: 'AWS Core Services', duration: '35 min', type: 'video' },
+    { id: 2, title: 'Networking (VPC, Subnets)', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Compute (EC2, Lambda)', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Storage (S3, EFS)', duration: '30 min', type: 'interactive' },
+    { id: 5, title: 'Databases (RDS, DynamoDB)', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Serverless Architectures', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Security (IAM, KMS)', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: Design on AWS', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Advanced: Cybersecurity & Ethical Hacking (Course ID: 26)
+  26: [
+    { id: 1, title: 'Cybersecurity Fundamentals', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Threat Modeling', duration: '35 min', type: 'interactive' },
+    { id: 3, title: 'Network Security Basics', duration: '35 min', type: 'video' },
+    { id: 4, title: 'Web App Vulnerabilities (OWASP)', duration: '45 min', type: 'interactive' },
+    { id: 5, title: "Penetration Testing Tools", duration: '40 min', type: 'video' },
+    { id: 6, title: 'Secure Coding Practices', duration: '35 min', type: 'interactive' },
+    { id: 7, title: 'Incident Response Basics', duration: '30 min', type: 'video' },
+    { id: 8, title: 'Project: Vulnerability Assessment', duration: '90 min', type: 'interactive' },
+  ],
+
+  // Advanced: Advanced Algorithms & Data Structures (Course ID: 27)
+  27: [
+    { id: 1, title: 'Algorithm Analysis (Big-O)', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Advanced Trees (AVL, Red-Black)', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Heaps and Priority Queues', duration: '35 min', type: 'video' },
+    { id: 4, title: 'Graphs: Shortest Paths, MST', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'Greedy and DP Patterns', duration: '40 min', type: 'video' },
+    { id: 6, title: 'String Algorithms', duration: '35 min', type: 'interactive' },
+    { id: 7, title: 'Backtracking and Recursion', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: Competitive Problems', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Advanced: DevOps & CI/CD Mastery (Course ID: 28)
+  28: [
+    { id: 1, title: 'DevOps Culture and Principles', duration: '30 min', type: 'video' },
+    { id: 2, title: 'CI with GitHub Actions', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'CD Pipelines', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Infrastructure as Code (Terraform)', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'Monitoring and Alerting', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Containers and Orchestration', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Secrets Management', duration: '30 min', type: 'video' },
+    { id: 8, title: 'Project: End-to-End Pipeline', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Advanced: Blockchain Development (Course ID: 29)
+  29: [
+    { id: 1, title: 'Blockchain Fundamentals', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Cryptography Basics', duration: '35 min', type: 'interactive' },
+    { id: 3, title: 'Smart Contracts Overview', duration: '35 min', type: 'video' },
+    { id: 4, title: 'Solidity Basics', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'DApp Architecture', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Testing Smart Contracts', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Security and Audits', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: Token Contract', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Advanced: Full Stack Architecture (Course ID: 30)
+  30: [
+    { id: 1, title: 'Architectural Styles', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Domain-Driven Design Basics', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Clean Architecture Principles', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Scalability Patterns', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'Caching Strategies', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Asynchronous Messaging', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Security and Compliance', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: System Blueprint', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Intermediate: Advanced JavaScript & ES6+ (Course ID: 11)
+  11: [
+    { id: 1, title: 'ES6 Syntax Deep Dive', duration: '35 min', type: 'video' },
+    { id: 2, title: 'Asynchronous Patterns (Promises, async/await)', duration: '45 min', type: 'interactive' },
+    { id: 3, title: 'Modules and Tooling', duration: '35 min', type: 'video' },
+    { id: 4, title: 'Iterables and Generators', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Prototypes and Classes', duration: '40 min', type: 'video' },
+    { id: 6, title: 'Functional Programming in JS', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Performance Optimization', duration: '35 min', type: 'video' },
+    { id: 8, title: 'Project: Modern JS App', duration: '90 min', type: 'interactive' },
+  ],
+
+  // Intermediate: React.js Development (Course ID: 12)
+  12: [
+    { id: 1, title: 'React Core Concepts', duration: '35 min', type: 'video' },
+    { id: 2, title: 'Hooks Deep Dive', duration: '45 min', type: 'interactive' },
+    { id: 3, title: 'State Management Approaches', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Routing and Code Splitting', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Performance and Profiling', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Testing React Apps', duration: '40 min', type: 'interactive' },
+    { id: 7, title: 'Project: React Dashboard', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Intermediate: Node.js Backend Development (Course ID: 13)
+  13: [
+    { id: 1, title: 'Node Runtime and Event Loop', duration: '35 min', type: 'video' },
+    { id: 2, title: 'Express Fundamentals', duration: '45 min', type: 'interactive' },
+    { id: 3, title: 'Authentication and Sessions', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Databases and ORMs', duration: '40 min', type: 'interactive' },
+    { id: 5, title: 'Error Handling and Logging', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Project: REST API', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Intermediate: Python Web Development (Course ID: 14)
+  14: [
+    { id: 1, title: 'Flask vs Django', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Django Models and Admin', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Views, Templates, and URLs', duration: '40 min', type: 'video' },
+    { id: 4, title: 'REST APIs with Django REST Framework', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'Auth and Permissions', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Deploying Python Apps', duration: '40 min', type: 'interactive' },
+  ],
+
+  // Intermediate: Java Programming (Course ID: 15)
+  15: [
+    { id: 1, title: 'Java Fundamentals Recap', duration: '30 min', type: 'video' },
+    { id: 2, title: 'OOP in Practice', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Collections and Streams', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Concurrency Basics', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'JVM and Memory', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Project: Console App', duration: '90 min', type: 'interactive' },
+  ],
+
+  // Intermediate: MongoDB & NoSQL (Course ID: 16)
+  16: [
+    { id: 1, title: 'Document Databases', duration: '30 min', type: 'video' },
+    { id: 2, title: 'CRUD Operations', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Aggregation Framework', duration: '45 min', type: 'video' },
+    { id: 4, title: 'Data Modeling in NoSQL', duration: '40 min', type: 'interactive' },
+    { id: 5, title: 'Indexes and Performance', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Replication and Sharding', duration: '40 min', type: 'interactive' },
+  ],
+
+  // Intermediate: TypeScript Development (Course ID: 17)
+  17: [
+    { id: 1, title: 'Typing the JavaScript World', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Interfaces and Types', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Generics and Utility Types', duration: '45 min', type: 'video' },
+    { id: 4, title: 'Advanced Types and Narrowing', duration: '45 min', type: 'interactive' },
+    { id: 5, title: 'TS with React/Node', duration: '40 min', type: 'video' },
+    { id: 6, title: 'Project: Typed App', duration: '90 min', type: 'interactive' },
+  ],
+
+  // Intermediate: REST API Development (Course ID: 18)
+  18: [
+    { id: 1, title: 'HTTP and REST Basics', duration: '30 min', type: 'video' },
+    { id: 2, title: 'API Design Principles', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Auth (JWT, OAuth2)', duration: '45 min', type: 'video' },
+    { id: 4, title: 'Documentation (OpenAPI)', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Rate Limiting and Caching', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Project: Build an API', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Intermediate: Vue.js Framework (Course ID: 19)
+  19: [
+    { id: 1, title: 'Vue Core Concepts', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Composition API', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'State Management with Pinia/Vuex', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Routing with Vue Router', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Performance and Tooling', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Project: Vue SPA', duration: '120 min', type: 'interactive' },
+  ],
+
+  // Intermediate: Docker & Containerization (Course ID: 20)
+  20: [
+    { id: 1, title: 'Containers vs VMs', duration: '30 min', type: 'video' },
+    { id: 2, title: 'Docker Images and Containers', duration: '40 min', type: 'interactive' },
+    { id: 3, title: 'Dockerfiles and Best Practices', duration: '40 min', type: 'video' },
+    { id: 4, title: 'Docker Compose', duration: '35 min', type: 'interactive' },
+    { id: 5, title: 'Registries and CI', duration: '35 min', type: 'video' },
+    { id: 6, title: 'Kubernetes Basics', duration: '45 min', type: 'interactive' },
+  ],
+};
+
+// Rich lesson content with theory, code snippets, and references
+export const lessonContent = {
+  // HTML Fundamentals (Course ID: 1)
+  1: {
+    1: {
+      title: 'Introduction to HTML',
+      theory: `HTML (HyperText Markup Language) is the standard markup language for creating web pages. It provides the structure and content of web pages, while CSS handles styling and JavaScript adds interactivity.
+
+Key concepts:
+- HTML uses tags to define elements
+- Tags come in pairs: opening and closing
+- Elements can be nested inside other elements
+- HTML is case-insensitive but lowercase is recommended`,
+      codeSnippet: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Welcome to HTML!</h1>
+    <p>This is my first paragraph.</p>
+</body>
+</html>`,
+      references: [
+        'MDN HTML Basics: https://developer.mozilla.org/en-US/docs/Web/HTML',
+        'W3Schools HTML Tutorial: https://www.w3schools.com/html/',
+        'HTML Living Standard: https://html.spec.whatwg.org/'
+      ]
+    },
+    2: {
+      title: 'HTML Document Structure',
+      theory: `Every HTML document follows a specific structure that browsers understand. The DOCTYPE declaration tells the browser which version of HTML to use, while the html element is the root container.
+
+Document structure:
+- DOCTYPE: HTML5 declaration
+- html: Root element with lang attribute
+- head: Contains metadata (title, meta tags, links)
+- body: Contains visible content`,
+      codeSnippet: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Structure</title>
+    <meta name="description" content="Learn HTML document structure">
+</head>
+<body>
+    <!-- Your content goes here -->
+</body>
+</html>`,
+      references: [
+        'HTML Document Structure: https://developer.mozilla.org/en-US/docs/Web/HTML/Introduction',
+        'HTML5 Semantic Elements: https://www.w3schools.com/html/html5_semantic_elements.asp'
+      ]
+    }
+  },
+  // CSS Basics & Styling (Course ID: 2)
+  2: {
+    1: {
+      title: 'CSS Fundamentals',
+      theory: `CSS (Cascading Style Sheets) controls the visual presentation of HTML elements. It separates content from presentation, making websites more maintainable and flexible.
+
+CSS works through:
+- Selectors: Target specific HTML elements
+- Properties: Define what to style (color, size, position)
+- Values: Define how to style (red, 16px, center)
+- Cascade: Rules can override each other based on specificity`,
+      codeSnippet: `/* CSS Syntax */
+selector {
+    property: value;
+    property: value;
+}
+
+/* Example */
+h1 {
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+}
+
+p {
+    color: #333;
+    line-height: 1.6;
+    margin: 16px 0;
+}`,
+      references: [
+        'MDN CSS Basics: https://developer.mozilla.org/en-US/docs/Web/CSS',
+        'CSS Selectors Reference: https://www.w3schools.com/cssref/css_selectors.asp'
+      ]
+    }
+  },
+  // JavaScript for Beginners (Course ID: 3)
+  3: {
+    1: {
+      title: 'JavaScript Introduction',
+      theory: `JavaScript is a versatile programming language that runs in web browsers and on servers. It's essential for creating interactive web applications.
+
+JavaScript features:
+- Dynamic typing: Variables can hold any type of data
+- Prototype-based: Objects inherit from other objects
+- First-class functions: Functions are treated as values
+- Event-driven: Responds to user interactions`,
+      codeSnippet: `// Variables and data types
+let name = "John";           // String
+let age = 25;               // Number
+let isStudent = true;       // Boolean
+let hobbies = ["reading", "coding"]; // Array
+
+// Functions
+function greet(person) {
+    return "Hello, " + person + "!";
+}
+
+// Event handling
+document.getElementById("myButton").addEventListener("click", function() {
+    alert("Button clicked!");
+});`,
+      references: [
+        'MDN JavaScript Guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide',
+        'JavaScript.info: https://javascript.info/',
+        'Eloquent JavaScript: https://eloquentjavascript.net/'
+      ]
+    }
+  },
+  // Python Programming Basics (Course ID: 4)
+  4: {
+    1: {
+      title: 'Getting Started with Python',
+      theory: `Python is a high-level, interpreted programming language known for its simplicity and readability. It's widely used in web development, data science, AI, and automation.
+
+Python characteristics:
+- Readable syntax that resembles English
+- Extensive standard library
+- Cross-platform compatibility
+- Strong community support
+- Multiple programming paradigms supported`,
+      codeSnippet: `# Python basics
+print("Hello, World!")
+
+# Variables
+name = "Alice"
+age = 30
+height = 5.6
+
+# Data types
+numbers = [1, 2, 3, 4, 5]
+person = {"name": "Bob", "age": 25}
+
+# Functions
+def calculate_area(length, width):
+    return length * width
+
+# Classes
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def greet(self):
+        return f"Hello, I'm {self.name}"`,
+      references: [
+        'Python.org Tutorial: https://docs.python.org/3/tutorial/',
+        'Real Python: https://realpython.com/',
+        'Python for Everybody: https://www.py4e.com/'
+      ]
+    }
+  },
+  // React.js Development (Course ID: 12)
+  12: {
+    1: {
+      title: 'React Core Concepts',
+      theory: `React is a JavaScript library for building user interfaces, particularly single-page applications. It uses a component-based architecture and virtual DOM for efficient updates.
+
+Key React concepts:
+- Components: Reusable UI pieces
+- JSX: JavaScript syntax extension
+- Props: Data passed to components
+- State: Component's internal data
+- Virtual DOM: Efficient rendering strategy`,
+      codeSnippet: `import React, { useState } from 'react';
+
+// Functional component with hooks
+function Counter() {
+    const [count, setCount] = useState(0);
+    
+    return (
+        <div>
+            <h2>Count: {count}</h2>
+            <button onClick={() => setCount(count + 1)}>
+                Increment
+            </button>
+            <button onClick={() => setCount(count - 1)}>
+                Decrement
+            </button>
+        </div>
+    );
+}
+
+// Class component
+class Welcome extends React.Component {
+    render() {
+        return <h1>Hello, {this.props.name}</h1>;
+    }
+}
+
+export default Counter;`,
+      references: [
+        'React Official Docs: https://react.dev/',
+        'React Tutorial: https://react.dev/learn',
+        'React Patterns: https://reactpatterns.com/'
+      ]
+    }
+  }
 };
 
 export const quizzes = {

@@ -46,6 +46,73 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('studysphere_user', JSON.stringify(updatedUser));
   };
 
+  const markLessonComplete = (courseId, lessonId) => {
+    if (!user) return;
+    
+    const updatedUser = {
+      ...user,
+      enrolledCourses: user.enrolledCourses.map(course => {
+        if (course.id === courseId) {
+          const completedLessons = course.completedLessons || [];
+          if (!completedLessons.includes(lessonId)) {
+            return {
+              ...course,
+              completedLessons: [...completedLessons, lessonId],
+              lastAccessedLesson: lessonId,
+              lastAccessedAt: new Date().toISOString()
+            };
+          }
+        }
+        return course;
+      })
+    };
+    
+    setUser(updatedUser);
+    localStorage.setItem('studysphere_user', JSON.stringify(updatedUser));
+  };
+
+  const updateLastAccessedLesson = (courseId, lessonId) => {
+    if (!user) return;
+    
+    const updatedUser = {
+      ...user,
+      enrolledCourses: user.enrolledCourses.map(course =>
+        course.id === courseId 
+          ? { 
+              ...course, 
+              lastAccessedLesson: lessonId,
+              lastAccessedAt: new Date().toISOString()
+            } 
+          : course
+      )
+    };
+    
+    setUser(updatedUser);
+    localStorage.setItem('studysphere_user', JSON.stringify(updatedUser));
+  };
+
+  const markCourseComplete = (courseId) => {
+    if (!user) return;
+    
+    const updatedUser = {
+      ...user,
+      enrolledCourses: user.enrolledCourses.map(course => {
+        if (course.id === courseId) {
+          return {
+            ...course,
+            isCompleted: true,
+            completedAt: new Date().toISOString(),
+            progress: 100
+          };
+        }
+        return course;
+      })
+    };
+    
+    setUser(updatedUser);
+    localStorage.setItem('studysphere_user', JSON.stringify(updatedUser));
+  };
+
   const enrollInCourse = (course) => {
     if (!user) return;
     
@@ -68,6 +135,9 @@ export const AuthProvider = ({ children }) => {
     loading,
     updateUserProgress,
     enrollInCourse,
+    markLessonComplete,
+    updateLastAccessedLesson,
+    markCourseComplete,
   };
 
   return (

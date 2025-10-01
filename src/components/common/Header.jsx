@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, BookOpen, User, LogOut, Settings } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
+import StudySphereLogo from './StudySphereLogo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,14 +33,8 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative">
-              <BookOpen className="h-8 w-8 text-primary-600 group-hover:text-primary-700 transition-colors duration-200" />
-              <div className="absolute inset-0 bg-primary-600 opacity-20 rounded-full animate-ping group-hover:animate-pulse"></div>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-              StudySphere
-            </span>
+          <Link to="/" className="group">
+            <StudySphereLogo size={40} className="group-hover:scale-105 transition-transform duration-200" />
           </Link>
 
           {/* Desktop Navigation */}
