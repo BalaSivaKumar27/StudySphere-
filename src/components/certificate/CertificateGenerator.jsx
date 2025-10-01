@@ -91,8 +91,7 @@ export default function CertificateGenerator({
 
               {/* Header */}
               <div className="mb-8">
-                <h1 className="mb-2 text-4xl font-bold text-blue-600">Certificate</h1>
-                <div className="mb-4 text-xl font-semibold text-green-600">of Excellence</div>
+                <h1 className="mb-2 text-4xl font-bold text-blue-600">Certificate of Excellence</h1>
               </div>
 
               {/* Awarded To */}
