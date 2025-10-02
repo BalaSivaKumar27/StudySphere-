@@ -49,14 +49,14 @@ export default function CertificateGenerator({
   };
 
   return (
-    <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50">
+    <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50 scrollable overflow-y-auto max-h-[95vh]">
       <div className="fixed inset-0 bg-black/60" />
       
       <div className="flex items-center justify-center min-h-screen p-4">
-        <Dialog.Panel className="relative w-full max-w-4xl bg-white rounded-lg shadow-xl">
+        <Dialog.Panel className="relative w-full max-w-4xl bg-white rounded-lg shadow-xl ">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">Download Certificate</h2>
+            <h2 className="p-2 text-lg font-semibold">Download Certificate</h2>
             <button onClick={onClose} className="p-1 rounded hover:bg-gray-100">
               <X size={20} />
             </button>
@@ -81,23 +81,23 @@ export default function CertificateGenerator({
           </div>
 
           {/* Certificate Content */}
-          <div className="p-4">
-            <div ref={certificateRef} className="p-8 text-center bg-white border-4 border-blue-800">
+          <div className="p-8">
+            <div ref={certificateRef} className="p-12 text-center bg-white border-4 border-blue-800 ">
               
               {/* Academy Name - TOP */}
-              <div className="mb-2">
-                <h1 className="text-3xl font-bold text-purple-600">StudySphere Academy</h1>
+              <div className="mb-4">
+                <h1 className="text-4xl font-bold text-purple-600 uppercase ">StudySphere Academy</h1>
               </div>
 
               {/* Header */}
-              <div className="mb-8">
-                <h1 className="mb-2 text-4xl font-bold text-blue-600">Certificate of Excellence</h1>
+              <div className="mb-1">
+                <h1 className="mb-1 text-3xl font-bold text-blue-600">Certificate of Excellence</h1>
               </div>
 
               {/* Awarded To */}
-              <div className="my-8">
+              <div className="my-4">
                 <p className="mb-4 text-lg text-gray-600">This certificate is awarded to</p>
-                <h2 className="inline-block px-8 pb-4 text-5xl font-bold text-red-600 border-b-4 border-yellow-500">
+                <h2 className="inline-block px-8 pb-4 text-5xl font-bold text-green-800 uppercase border-b-4 border-yellow-500">
                   {user.name}
                 </h2>
               </div>
