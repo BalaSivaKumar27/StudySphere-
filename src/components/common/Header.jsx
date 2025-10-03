@@ -29,16 +29,18 @@ const Header = () => {
   const isActivePath = (path) => location.pathname === path;
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <header className="sticky top-0 z-50 transition-colors duration-300 bg-white border-b border-gray-200 shadow-lg dark:bg-gray-900 dark:border-gray-700">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="group">
-            <StudySphereLogo size={40} className="group-hover:scale-105 transition-transform duration-200" />
+            <StudySphereLogo size={40} className="transition-transform duration-200 group-hover:scale-105" />
           </Link>
 
+          <Link></Link>
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="items-center hidden space-x-8 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
@@ -55,17 +57,17 @@ const Header = () => {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="items-center hidden space-x-4 md:flex">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 group"
+              className="p-2 transition-all duration-200 bg-gray-100 rounded-lg dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 group"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
-                <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 transition-colors duration-200" />
+                <Moon className="w-5 h-5 text-gray-600 transition-colors duration-200 dark:text-gray-400 group-hover:text-primary-600" />
               ) : (
-                <Sun className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-yellow-500 transition-colors duration-200" />
+                <Sun className="w-5 h-5 text-gray-600 transition-colors duration-200 dark:text-gray-400 group-hover:text-yellow-500" />
               )}
             </button>
 
@@ -74,12 +76,12 @@ const Header = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                  className="flex items-center p-2 space-x-2 transition-all duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                   <img
                     src={user.avatar}
                     alt={user.name}
-                    className="h-8 w-8 rounded-full border-2 border-primary-200"
+                    className="w-8 h-8 border-2 rounded-full border-primary-200"
                   />
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {user.name}
@@ -88,13 +90,13 @@ const Header = () => {
 
                 {/* User Dropdown */}
                 {isUserMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-10 border border-gray-200 dark:border-gray-700">
+                  <div className="absolute right-0 z-10 w-48 py-1 mt-2 bg-white border border-gray-200 rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-700">
                     <Link
                       to="/dashboard"
                       className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      <User className="h-4 w-4 mr-2" />
+                      <User className="w-4 h-4 mr-2" />
                       Dashboard
                     </Link>
                     {user.role === 'admin' && (
@@ -103,7 +105,7 @@ const Header = () => {
                         className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        <Settings className="h-4 w-4 mr-2" />
+                        <Settings className="w-4 h-4 mr-2" />
                         Admin Panel
                       </Link>
                     )}
@@ -111,7 +113,7 @@ const Header = () => {
                       onClick={handleLogout}
                       className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      <LogOut className="h-4 w-4 mr-2" />
+                      <LogOut className="w-4 h-4 mr-2" />
                       Logout
                     </button>
                   </div>
@@ -121,7 +123,7 @@ const Header = () => {
               <div className="flex items-center space-x-2">
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   Login
                 </Link>
@@ -138,15 +140,15 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors duration-200"
+            className="p-2 text-gray-400 transition-colors duration-200 rounded-md md:hidden hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="py-4 border-t border-gray-200 md:hidden dark:border-gray-700">
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <Link
@@ -170,12 +172,12 @@ const Header = () => {
                   </span>
                   <button
                     onClick={toggleTheme}
-                    className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+                    className="p-2 transition-all duration-200 bg-gray-100 rounded-lg dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
                   >
                     {theme === 'light' ? (
-                      <Moon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                      <Moon className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     ) : (
-                      <Sun className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                      <Sun className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     )}
                   </button>
                 </div>
@@ -184,19 +186,19 @@ const Header = () => {
                   <div className="space-y-2">
                     <Link
                       to="/dashboard"
-                      className="flex items-center px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-all duration-200"
+                      className="flex items-center px-3 py-2 text-base font-medium text-gray-700 transition-all duration-200 rounded-md dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <User className="h-4 w-4 mr-2" />
+                      <User className="w-4 h-4 mr-2" />
                       Dashboard
                     </Link>
                     {user.role === 'admin' && (
                       <Link
                         to="/admin"
-                        className="flex items-center px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-all duration-200"
+                        className="flex items-center px-3 py-2 text-base font-medium text-gray-700 transition-all duration-200 rounded-md dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Settings className="h-4 w-4 mr-2" />
+                        <Settings className="w-4 h-4 mr-2" />
                         Admin Panel
                       </Link>
                     )}
@@ -205,9 +207,9 @@ const Header = () => {
                         handleLogout();
                         setIsMenuOpen(false);
                       }}
-                      className="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-all duration-200"
+                      className="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 transition-all duration-200 rounded-md dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                     >
-                      <LogOut className="h-4 w-4 mr-2" />
+                      <LogOut className="w-4 h-4 mr-2" />
                       Logout
                     </button>
                   </div>
@@ -215,14 +217,14 @@ const Header = () => {
                   <div className="space-y-2">
                     <Link
                       to="/login"
-                      className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-all duration-200"
+                      className="block px-3 py-2 text-base font-medium text-gray-700 transition-all duration-200 rounded-md dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Login
                     </Link>
                     <Link
                       to="/signup"
-                      className="block px-3 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-base font-medium rounded-md hover:shadow-lg transition-all duration-200"
+                      className="block px-3 py-2 text-base font-medium text-white transition-all duration-200 rounded-md bg-gradient-to-r from-primary-600 to-secondary-600 hover:shadow-lg"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Sign Up

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Dialog } from "@headlessui/react";
-import { X, Download, Image, FileText } from "lucide-react";
+import { X, Download, Image, FileText, Link2Icon } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -83,6 +83,7 @@ export default function CertificateGenerator({
           {/* Certificate Content */}
           <div className="p-8">
             <div ref={certificateRef} className="p-12 text-center bg-white border-4 border-blue-800 ">
+          
               
               {/* Academy Name - TOP */}
               <div className="mb-4">
@@ -97,7 +98,7 @@ export default function CertificateGenerator({
               {/* Awarded To */}
               <div className="my-4">
                 <p className="mb-4 text-lg text-gray-600">This certificate is awarded to</p>
-                <h2 className="inline-block px-8 pb-4 text-5xl font-bold text-green-800 uppercase border-b-4 border-yellow-500">
+                <h2 className="inline-block px-8 pb-4 text-2xl font-bold text-green-800 uppercase border-b-4 border-yellow-500">
                   {user.name}
                 </h2>
               </div>
