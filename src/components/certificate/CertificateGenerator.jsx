@@ -98,7 +98,7 @@ export default function CertificateGenerator({
               {/* Awarded To */}
               <div className="my-4">
                 <p className="mb-4 text-lg text-gray-600">This certificate is awarded to</p>
-                <h2 className="inline-block px-8 pb-4 text-2xl font-bold text-green-800 uppercase border-b-4 border-yellow-500">
+                <h2 className="inline-block px-8 pb-4 text-3xl font-bold text-green-800 uppercase border-b-4 border-yellow-500">
                   {user.name}
                 </h2>
               </div>
